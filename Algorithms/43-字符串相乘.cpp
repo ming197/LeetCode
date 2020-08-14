@@ -66,13 +66,11 @@ public:
 
 
 int main(){
-    // Solution calulator;
-    // string s1 = "12456934";
-    // string s2 = "255";
-    // string s = calulator.multiply(s1, s2);
-    // cout<< s;
-    string a;
-    a.push_back('1');
-    cout<<a;
+    Solution calulator;
+    string s1 = "12456934";
+    string s2 = "255";
+    string s = calulator.multiply(s1, s2);
+    cout<< s;
+    
     return 0;
 }
