@@ -39,6 +39,7 @@ public:
         }
         return slow;
     }
+    // 利用中位节电构建二叉搜索树
     TreeNode* buildBST(ListNode* left, ListNode* right){
         if(left == right){
             return nullptr;
