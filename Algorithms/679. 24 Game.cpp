@@ -51,10 +51,10 @@ public:
                             }
                             list2.emplace_back(l[i] / l[j]);
                         }
-                        if(solve(list2)){
+                        if(solve(list2)){   // 递归
                             return true;
                         }
-                        list2.pop_back();
+                        list2.pop_back();   // 进行下一次循环之前，需要将上一步四则运算的结果从 list2 中删除
                     }
                 }
             }
