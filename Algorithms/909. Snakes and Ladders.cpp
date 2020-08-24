@@ -5,6 +5,7 @@
 #include <unordered_map>
 using namespace std;
 
+// BFS寻找最短路径
 class Solution {
 public:
     int snakesAndLadders(vector<vector<int>>& board) {
@@ -19,14 +20,14 @@ public:
         {
             int s = q.front();
             q.pop();
-            if( s == n * n) return dist[s];
-            for(int s2 = s + 1; s2 <= min(s + 6, n * n); s2++){
+            if( s == n*n) return dist[s];
+            for(int s2 = s+1; s2 <= min(s+6, n*n); s2++){
                 int rc = get(s2, n);
                 int r = rc / n, c = rc % n;
                 int s2Final = (board[r][c] == -1 ? s2 : board[r][c]);
-                if(dist.find(s2Final) == dist.end()){
+                if(dist.find(s2Final) == dist.end()){   // 当方格序号第一次出现，才会加入字典中（第一次出现时，路径最短）
                     dist[s2Final] = dist[s] + 1;
-                    q.emplace(s2Final);
+                    q.emplace(s2Final); // 同时保证每个方格只入队一次，避免进入死循环
                 }
 
             }
