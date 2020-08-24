@@ -35,7 +35,7 @@ public:
         
     }
 
-    int get(int s, int n){  // 计算方格的行数和列数
+    int get(int s, int n){  // 计算方格的行数和列数, s表示方格的序号从1到n*n
         int quot = (s - 1) / n;
         int rem = (s - 1) % n;
         int row = n - 1 - quot;
