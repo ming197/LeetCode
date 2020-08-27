@@ -15,7 +15,7 @@ public:
             }
             return;
         }
-        if(nums[cur] >= last){
+        if(nums[cur] >= last){  // 回溯：满足条件即入栈，进行dfs遍历，然后出栈
             temp.emplace_back(nums[cur]);
             dfs(cur + 1, nums[cur], nums);
             temp.pop_back();
