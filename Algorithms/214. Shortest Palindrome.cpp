@@ -13,6 +13,7 @@ public:
         for(int l = n; l >= 1; l--){
             if(_reverse.substr(n - l , l) == s.substr(0, l)) return _reverse.substr(0, n - l) + s;
         }
+        return s;
     }
 };
 
