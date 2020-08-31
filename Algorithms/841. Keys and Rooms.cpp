@@ -11,7 +11,7 @@ public:
         int n = rooms.size();
         dfs(rooms, 0);
         for(int i = 0; i < n; i++){
-            if(visited[i] == false) return false
+            if(visited[i] == false) return false;
         }
         return true;
 
