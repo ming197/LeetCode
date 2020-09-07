@@ -15,7 +15,9 @@ public:
     }
 
     void backtrack(vector<vector<int>>& ans, vector<int>& tmp, int& n, int& k, vector<bool>& selected, int start){
-        
+
+        if(k - tmp.size() > n - start) return;
+
         if(tmp.size() == k) {
             ans.emplace_back(tmp);
             return;
