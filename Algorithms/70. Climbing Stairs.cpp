@@ -7,7 +7,7 @@ using namespace std;
 class Solution {
 public:
     int climbStairs(int n) {
-        if(n == 1) return 0;
+        if(n == 1) return 1;
         vector<int> dp(n);
         dp[0] = 1;
         dp[1] = 2;

@@ -9,12 +9,11 @@ public:
     vector<vector<int>> combine(int n, int k) {
         vector<vector<int>> ans;
         vector<int> tmp;
-        vector<bool> selected(n, 0);
-        backtrack(ans, tmp, n, k, selected, 0);
+        backtrack(ans, tmp, n, k, 0);
         return ans;
     }
 
-    void backtrack(vector<vector<int>>& ans, vector<int>& tmp, int& n, int& k, vector<bool>& selected, int start){
+    void backtrack(vector<vector<int>>& ans, vector<int>& tmp, int& n, int& k, int start){
 
         if(k - tmp.size() > n - start) return;
 
@@ -22,13 +21,10 @@ public:
             ans.emplace_back(tmp);
             return;
         }
-
+        
         for(int i = start; i < n; i++){
-            if(selected[i]) continue;
             tmp.emplace_back(i + 1);
-            selected[i] = 1;
-            backtrack(ans, tmp, n, k, selected, i);
-            selected[i] = 0;
+            backtrack(ans, tmp, n, k, i + 1);
             tmp.pop_back();
         }
     }
