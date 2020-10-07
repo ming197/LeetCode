@@ -12,6 +12,7 @@ public:
         vector<int> temp;
         vector<pair<int, int>> freq;
         sort(candidates.begin(), candidates.end());
+        // 记录不同元素出现的频次
         for(auto num : candidates){
             if(freq.empty() || freq.back().first != num){
                 freq.emplace_back(num, 1);
