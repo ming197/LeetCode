@@ -2,28 +2,31 @@
 #include <vector>
 #include <iostream>
 #include <unordered_set>
+#include <string>
 
 using namespace std;
 
 class Solution {
 public:
-    unordered_set<string> wordDictSet;
     vector<string> wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wordDictSet;
         for(auto& word : wordDict){
             wordDictSet.insert(word);
         }
         int n = s.size();
-        // dp[j][i]: 起始点为 j， 长度为 i 的子串是否在字典中
-        vector<vector<bool>> dp(n, vector<bool>(n + 1, false));
-        for(int i = 0; i < n; i++){
-            dp[i][0] = true;
-        }
-        for(int i = 1; i <= n; i++){ 
-            for(int j = 0; j + i - 1 < n; j++){
-                for(int k = 1; k < i; k++){
-                    // dp[j][i] = 
+        vector<vector<string>> dp(n+1);
+        dp[0] = {""};
+        for(auto i = 1; i <= n; i++){
+            vector<string> list;
+            for(int j = 0; j < i; j++){
+                if(dp[j].size() > 0 && wordDictSet.find(s.substr(j, i - j)) != wordDictSet.end()){
+                    for(string l : dp[j]){
+                        list.emplace_back((l + (l.size() == 0 ? "" : " ") + s.substr(j, i - j)));
+                    }
                 }
             }
+            dp[i] = list;
         }
+        return dp[n];
     }
 };
