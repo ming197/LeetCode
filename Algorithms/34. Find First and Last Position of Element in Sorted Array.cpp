@@ -8,41 +8,34 @@ public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int n = nums.size();
         if(n == 0 || target < nums[0] || target > nums[n-1]) return {-1, -1};
-        int l1 = 0, r1 = n - 1;
-        int l2 = 0, r2 = n - 1;
-        while (l1 < r1)
-        {
+        int l1 = 0, r1 = n;
+        int l2 = 0, r2 = n;
+        int ans1 = -1, ans2 = -1;
+        // 寻找左端点
+        while (l1 < r1){
             int mid1 = (l1 + r1) / 2;
-            if(nums[mid1] == target){
+            if(nums[mid1] >= target){
                 r1 = mid1;
+                ans1 = mid1;
             }else{
-                if(nums[mid1] < target){
-                    l1 = mid1 + 1;
-                }else{
-                    r1 = mid1 - 1;
-                }
+                l1 = mid1 + 1;
             }
         }
-        if(nums[r1] != target) return {-1, -1};
-        l2 = r1;
+        if(ans1 == -1 || nums[ans1] != target) return {-1, -1};
+        // 寻找右端点
+        l2 = ans1;
         while(l2 < r2){
             int mid2 = (l2 + r2) / 2;
-            if(nums[mid2] == target){
-                l2 = mid2;
+            if(nums[mid2] <= target){
+                l2 = mid2 + 1;
+                ans2 = l2;
             }else{
-                if(nums[mid2] < target){
-                    l2 = mid2 + 1;
-                }else
-                {
-                    r2 = mid2 - 1;
-                }
-                
+                r2 = mid2;
             }
         }
-        return {r1, l2};
+        return {ans1, ans2 - 1};
     }
 };
-
 
 int main(){
 
