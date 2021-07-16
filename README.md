@@ -4,4 +4,4 @@ LeetCode
 
 7-16
 
-Creating a new branch is quick & simple.
+Creating a new branch is quick and simple.
